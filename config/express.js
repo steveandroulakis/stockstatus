@@ -171,8 +171,16 @@ module.exports = function(db) {
 
     });
 
-	cronJob.start();
+	//cronJob.start();
 
+	// db.model('Article').create({
+	// 			title: 'Article Title',
+	// 			code: 'APPL',
+	// 			price: 0}, function (err) {
+	//   if (err) {
+	//   	console.log(err);
+	//   }
+	// });
 
 	// Return Express server instance
 	return app;
