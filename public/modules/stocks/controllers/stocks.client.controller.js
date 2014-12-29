@@ -8,14 +8,12 @@ angular.module('stocks').controller('StocksController', ['$scope', '$stateParams
 			var stock = new Stocks({
 				title: this.title,
 				code: this.code,
-				price: this.price
 			});
 			stock.$save(function(response) {
 				$location.path('stocks/' + response._id);
 
 				$scope.title = '';
 				$scope.code = '';
-				$scope.price = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

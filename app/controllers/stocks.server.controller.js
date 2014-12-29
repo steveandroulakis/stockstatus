@@ -73,8 +73,7 @@ exports.delete = function(req, res) {
  * List of Stocks
  */
 exports.list = function(req, res) {
-	console.log(req.user.id); // { 'user': req.user.id }
-	Stock.find().sort('-created').populate('user', 'displayName').exec(function(err, stocks) {
+	Stock.find({ 'user': req.user.id }).sort('-created').populate('user', 'displayName').exec(function(err, stocks) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)

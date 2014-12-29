@@ -55,7 +55,6 @@
 			var sampleStock = new Stocks({
 				title: 'An Stock about MEAN',
 				code: 'APPL',
-				price: 99
 			});
 
 			// Create a sample stocks array that includes the new stock
@@ -77,7 +76,6 @@
 			var sampleStock = new Stocks({
 				title: 'An Stock about MEAN',
 				code: 'APPL',
-				price: 99
 			});
 
 			// Set the URL parameter
@@ -99,7 +97,6 @@
 			var sampleStockPostData = new Stocks({
 				title: 'An Stock about MEAN',
 				code: 'APPL',
-				price: 99
 			});
 
 			// Create a sample stock response
@@ -107,13 +104,11 @@
 				_id: '525cf20451979dea2c000001',
 				title: 'An Stock about MEAN',
 				code: 'APPL',
-				price: 99
 			});
 
 			// Fixture mock form input values
 			scope.title = 'An Stock about MEAN';
 			scope.code = 'APPL';
-			scope.price = 99;
 
 			// Set POST response
 			$httpBackend.expectPOST('stocks', sampleStockPostData).respond(sampleStockResponse);
@@ -125,7 +120,7 @@
 			// Test form inputs are reset
 			expect(scope.title).toEqual('');
 			expect(scope.code).toEqual('');
-			expect(scope.price).toEqual(0);
+			expect(scope.updates).toEqual(0);
 
 			// Test URL redirection after the stock was created
 			expect($location.path()).toBe('/stocks/' + sampleStockResponse._id);
@@ -137,7 +132,6 @@
 				_id: '525cf20451979dea2c000001',
 				title: 'An Stock about MEAN',
 				code: 'APPL',
-				price: 99
 			});
 
 			// Mock stock in scope

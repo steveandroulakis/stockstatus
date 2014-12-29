@@ -7,6 +7,13 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 /**
+ * 4 Char Stock Names
+ */
+var validateStockCodeLength = function(code) {
+	return (this.provider !== 'local' || (code && code.length > 4));
+};	
+
+/**
  * Stock Schema
  */
 var StockSchema = new Schema({
@@ -23,12 +30,9 @@ var StockSchema = new Schema({
 	code: {
 		type: String,
 		default: '',
-		trim: true
+		trim: true,
+		validate: [validateStockCodeLength, 'Please enter a 4 letter stock code']
 	},
-	price: {
-		type: String,
-		default: 0,
-	},	
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'

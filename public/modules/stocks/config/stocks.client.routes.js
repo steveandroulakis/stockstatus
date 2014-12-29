@@ -5,6 +5,18 @@ angular.module('stocks').config(['$stateProvider',
 	function($stateProvider) {
 		// Stocks state routing
 		$stateProvider.
+		state('listStockrecords', {
+			url: '/stockrecords',
+			templateUrl: 'modules/stocks/views/list-stockrecords.client.view.html'
+		}).
+		state('createStockrecord', {
+			url: '/stockrecords/create',
+			templateUrl: 'modules/stocks/views/create-stockrecord.client.view.html'
+		}).
+		state('viewStockrecord', {
+			url: '/stockrecords/:stockrecordId',
+			templateUrl: 'modules/stocks/views/view-stockrecord.client.view.html'
+		}).		
 		state('listStocks', {
 			url: '/stocks',
 			templateUrl: 'modules/stocks/views/list-stocks.client.view.html'

@@ -6,17 +6,17 @@
 var should = require('should'),
 	mongoose = require('mongoose'),
 	User = mongoose.model('User'),
-	Stock = mongoose.model('Stock');
+	Stockrecord = mongoose.model('Stockrecord');
 
 /**
  * Globals
  */
-var user, stock;
+var user, stockrecord;
 
 /**
  * Unit tests
  */
-describe('Stock Model Unit Tests:', function() {
+describe('Stockrecord Model Unit Tests:', function() {
 	beforeEach(function(done) {
 		user = new User({
 			firstName: 'Full',
@@ -27,11 +27,10 @@ describe('Stock Model Unit Tests:', function() {
 			password: 'password'
 		});
 
-		user.save(function() {
-			stock = new Stock({
-				title: 'Stock Title',
-				code: 'APPL',
-				user: user
+		user.save(function() { 
+			stockrecord = new Stockrecord({
+				// Add model fields
+				// ...
 			});
 
 			done();
@@ -40,25 +39,17 @@ describe('Stock Model Unit Tests:', function() {
 
 	describe('Method Save', function() {
 		it('should be able to save without problems', function(done) {
-			return stock.save(function(err) {
+			return stockrecord.save(function(err) {
 				should.not.exist(err);
-				done();
-			});
-		});
-
-		it('should be able to show an error when try to save without title', function(done) {
-			stock.title = '';
-
-			return stock.save(function(err) {
-				should.exist(err);
 				done();
 			});
 		});
 	});
 
-	afterEach(function(done) {
-		Stock.remove().exec();
+	afterEach(function(done) { 
+		Stockrecord.remove().exec();
 		User.remove().exec();
+
 		done();
 	});
 });

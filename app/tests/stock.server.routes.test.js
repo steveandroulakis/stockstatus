@@ -40,7 +40,6 @@ describe('Stock CRUD tests', function() {
 			stock = {
 				title: 'Stock Title',
 				code: 'APPL',
-				price: 0
 			};
 
 			done();
