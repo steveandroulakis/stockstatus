@@ -1,0 +1,44 @@
+<section data-ng-controller="StocksController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1>Edit Stock</h1>
+	</div>
+	<div class="col-md-12">
+		<form name="stockForm" class="form-horizontal" data-ng-submit="update(stockForm.$valid)" novalidate>
+			<fieldset>
+				<div class="form-group" ng-class="{ 'has-error' : submitted && stockForm.title.$invalid}">
+					<label class="control-label" for="title">Title</label>
+					<div class="controls">
+						<input name="title" type="text" data-ng-model="stock.title" id="title" class="form-control" placeholder="Title" required>
+					</div>
+					<div ng-show="submitted && stockForm.title.$invalid" class="help-block">
+						<p ng-show="stockForm.title.$error.required" class="text-danger">Title is required</p>
+					</div>
+				</div>
+				<div class="form-group" ng-class="{ 'has-error' : submitted && stockForm.code.$invalid}">
+					<label class="control-label" for="title">Code</label>
+					<div class="controls">
+						<input name="code" type="text" data-ng-model="stock.code" id="code" class="form-control" placeholder="Code" required>
+					</div>
+					<div ng-show="submitted && stockForm.code.$invalid" class="help-block">
+						<p ng-show="stockForm.code.$error.required" class="text-danger">Code is required</p>
+					</div>					
+				</div>
+				<div class="form-group" ng-class="{ 'has-error' : submitted && stockForm.price.$invalid}">
+					<label class="control-label" for="price">Price</label>
+					<div class="controls">
+						<input name="price" type="text" data-ng-model="stock.price" id="price" class="form-control" placeholder="Price" required>
+					</div>
+					<div ng-show="submitted && stockForm.price.$invalid" class="help-block">
+						<p ng-show="stockForm.price.$error.required" class="text-danger">Price is required</p>
+					</div>					
+				</div>					
+				<div class="form-group">
+					<input type="submit" value="Update" class="btn btn-default">
+				</div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</section>

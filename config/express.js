@@ -163,18 +163,18 @@ module.exports = function(db) {
         // perform operation e.g. GET request http.get() etc.
         console.log('cron job started');
 
-    db.model('Article').find(function (err, articles) {
+    db.model('Stock').find(function (err, stocks) {
   	if (err) return console.error(err);
   	
-  	articles.forEach(function(article) { console.log(article.speak()); });
+  	stocks.forEach(function(stock) { console.log(stock.speak()); });
 	});
 
     });
 
 	//cronJob.start();
 
-	// db.model('Article').create({
-	// 			title: 'Article Title',
+	// db.model('Stock').create({
+	// 			title: 'Stock Title',
 	// 			code: 'APPL',
 	// 			price: 0}, function (err) {
 	//   if (err) {

@@ -6,17 +6,17 @@
 var should = require('should'),
 	mongoose = require('mongoose'),
 	User = mongoose.model('User'),
-	Article = mongoose.model('Article');
+	Stock = mongoose.model('Stock');
 
 /**
  * Globals
  */
-var user, article;
+var user, stock;
 
 /**
  * Unit tests
  */
-describe('Article Model Unit Tests:', function() {
+describe('Stock Model Unit Tests:', function() {
 	beforeEach(function(done) {
 		user = new User({
 			firstName: 'Full',
@@ -28,8 +28,8 @@ describe('Article Model Unit Tests:', function() {
 		});
 
 		user.save(function() {
-			article = new Article({
-				title: 'Article Title',
+			stock = new Stock({
+				title: 'Stock Title',
 				code: 'APPL',
 				price: 0,
 				user: user
@@ -41,16 +41,16 @@ describe('Article Model Unit Tests:', function() {
 
 	describe('Method Save', function() {
 		it('should be able to save without problems', function(done) {
-			return article.save(function(err) {
+			return stock.save(function(err) {
 				should.not.exist(err);
 				done();
 			});
 		});
 
 		it('should be able to show an error when try to save without title', function(done) {
-			article.title = '';
+			stock.title = '';
 
-			return article.save(function(err) {
+			return stock.save(function(err) {
 				should.exist(err);
 				done();
 			});
@@ -58,7 +58,7 @@ describe('Article Model Unit Tests:', function() {
 	});
 
 	afterEach(function(done) {
-		Article.remove().exec();
+		Stock.remove().exec();
 		User.remove().exec();
 		done();
 	});

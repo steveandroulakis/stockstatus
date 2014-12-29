@@ -7,9 +7,9 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 /**
- * Article Schema
+ * Stock Schema
  */
-var ArticleSchema = new Schema({
+var StockSchema = new Schema({
 	created: {
 		type: Date,
 		default: Date.now
@@ -35,7 +35,7 @@ var ArticleSchema = new Schema({
 	}
 });
 
-ArticleSchema.methods.speak = function () {
+StockSchema.methods.speak = function () {
 
   //this.update({ title: '333dd' }, function(){});
   var stockupdater = require('../controllers/core.server.controller.js');
@@ -44,4 +44,4 @@ ArticleSchema.methods.speak = function () {
   return this.title ? 'Meow name is ' + this.title : 'I don\'t have a name';
 };
 
-mongoose.model('Article', ArticleSchema);
+mongoose.model('Stock', StockSchema);
