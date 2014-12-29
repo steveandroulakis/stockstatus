@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Stockrecord = mongoose.model('Stockrecord'),
+	Stock = mongoose.model('Stock'),
 	_ = require('lodash');
 
 /**
@@ -36,14 +37,15 @@ exports.readrecord = function(req, res) {
 /**
  * List of Stocks
  */
-exports.listrecord = function(req, res) {
-	Stockrecord.find({'stock': req.stock.id}).sort('-created').populate('stock', 'title').exec(function(err, stockrecords) {
+exports.listrecord = function(req, res, stockrecordId) {
+	Stockrecord.find({'Stock': stockrecordId}).sort('-created').exec(function(err, stockrecord) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json(stockrecords);
+			req.stocks = stockrecord;
+			res.json(stockrecord);
 		}
 	});
 };
@@ -52,9 +54,9 @@ exports.listrecord = function(req, res) {
  * Stock middleware
  */
 exports.stockrecordByID = function(req, res, next, id) {
-	Stockrecord.findById(id).populate('stock', 'title').exec(function(err, stockrecord) {
+	Stockrecord.find({'Stock': id}).exec(function(err, stockrecord) {
 		if (err) return next(err);
-		if (!stockrecord) return next(new Error('Failed to load stockrecord ' + id));
+		if (!stockrecord) return next(new Error('Failed to load stock ' + id));
 		req.stockrecord = stockrecord;
 		next();
 	});

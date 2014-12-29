@@ -17,7 +17,7 @@ angular.module('stocks').controller('StockrecordsController', ['$scope', '$state
 			});
 		};
 
-		$scope.find = function() {
+		$scope.findrecords = function() {
 			$scope.stockrecords = Stockrecords.query();
 		};
 

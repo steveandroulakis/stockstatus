@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('stocks').controller('StocksController', ['$scope', '$stateParams', '$location', 'Authentication', 'Stocks',
-	function($scope, $stateParams, $location, Authentication, Stocks) {
+	function($scope, $stateParams, $location, Authentication, Stocks, StockRecords) {
 		$scope.authentication = Authentication;
 
 		$scope.create = function() {
@@ -50,6 +50,12 @@ angular.module('stocks').controller('StocksController', ['$scope', '$stateParams
 		};
 
 		$scope.findOne = function() {
+			$scope.stock = Stocks.get({
+				stockId: angular.copy($stateParams.stockId)
+			});
+		};
+
+		$scope.findrecords = function() {
 			$scope.stock = Stocks.get({
 				stockId: $stateParams.stockId
 			});

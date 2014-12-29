@@ -8,7 +8,7 @@ var users = require('../../app/controllers/users.server.controller'),
 
 module.exports = function(app) {
 	// Stockrecord Routes
-	app.route('/stockrecords')
+	app.route('/stockrecords/:stockId')
 		.get(stockrecords.listrecord, users.requiresLogin)
 		.post(users.requiresLogin, stockrecords.createrecord);
 

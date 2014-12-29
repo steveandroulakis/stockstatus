@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
  * 4 Char Stock Names
  */
 var validateStockCodeLength = function(code) {
-	return (this.provider !== 'local' || (code && code.length > 4));
+	return (code && code.length === 4);
 };	
 
 /**
@@ -31,7 +31,8 @@ var StockSchema = new Schema({
 		type: String,
 		default: '',
 		trim: true,
-		validate: [validateStockCodeLength, 'Please enter a 4 letter stock code']
+		validate: [validateStockCodeLength,
+                     'Please enter a 4 letter stock code']
 	},
 	user: {
 		type: Schema.ObjectId,
@@ -39,13 +40,13 @@ var StockSchema = new Schema({
 	}
 });
 
-StockSchema.methods.speak = function () {
+// StockSchema.methods.speak = function () {
 
-  //this.update({ title: '333dd' }, function(){});
-  var stockupdater = require('../controllers/core.server.controller.js');
-  console.log(stockupdater.updateStock());
+//   //this.update({ title: '333dd' }, function(){});
+//   var stockupdater = require('../controllers/core.server.controller.js');
+//   console.log(stockupdater.updateStock());
 
-  return this.title ? 'Meow name is ' + this.title : 'I don\'t have a name';
-};
+//   return this.title ? 'Meow name is ' + this.title : 'I don\'t have a name';
+// };
 
 mongoose.model('Stock', StockSchema);

@@ -163,6 +163,13 @@ module.exports = function(db) {
         // perform operation e.g. GET request http.get() etc.
         console.log('cron job started');
 
+	db.model('Stockrecord').create({
+				price: 4}, function (err) {
+	  if (err) {
+	  	console.log(err);
+	  }
+	});        
+
  //    db.model('Stock').find(function (err, stocks) {
  //  	if (err) return console.error(err);
   	
@@ -172,15 +179,6 @@ module.exports = function(db) {
     });
 
 	//cronJob.start();
-
-	// db.model('Stock').create({
-	// 			title: 'Stock Title',
-	// 			code: 'APPL',
-	// 			updates: 0}, function (err) {
-	//   if (err) {
-	//   	console.log(err);
-	//   }
-	// });
 
 	// Return Express server instance
 
