@@ -26,7 +26,7 @@ angular.module('stocks').config(['$stateProvider',
 			templateUrl: 'modules/stocks/views/edit-stock.client.view.html'
 		}).
 		state('viewStockrecord', {
-			url: '/stockrecords/:stockId',
+			url: '/stocks/:stockId/records',
 			templateUrl: 'modules/stocks/views/list-stockrecords.client.view.html'
 		});
 	}

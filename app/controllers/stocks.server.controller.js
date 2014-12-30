@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Stock = mongoose.model('Stock'),
+	Stockrecord = mongoose.model('Stockrecord'),
 	_ = require('lodash');
 
 /**
@@ -80,6 +81,21 @@ exports.list = function(req, res) {
 			});
 		} else {
 			res.json(stocks);
+		}
+	});
+};
+
+/**
+ * List of Stocks
+ */
+exports.listrecords = function(req, res) {
+	Stockrecord.find({ 'stock': req.stock.id }).sort('-created').populate('stock', 'code').exec(function(err, stockrecords) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.json(stockrecords);
 		}
 	});
 };

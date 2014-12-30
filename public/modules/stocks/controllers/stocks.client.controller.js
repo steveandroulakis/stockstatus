@@ -56,8 +56,9 @@ angular.module('stocks').controller('StocksController', ['$scope', '$stateParams
 		};
 
 		$scope.findrecords = function() {
-			$scope.stock = Stocks.get({
-				stockId: $stateParams.stockId
+			$scope.stocks = Stocks.query({
+				stockId: $stateParams.stockId,
+				records: 'records'
 			});
 		};
 	}

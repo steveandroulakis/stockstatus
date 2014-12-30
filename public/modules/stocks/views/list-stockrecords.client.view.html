@@ -1,18 +1,17 @@
 <section data-ng-controller="StocksController" data-ng-init="findrecords()">
-	<div class="page-header">
-		<h1>Stock Records</h1>
-	</div>
 	<div class="list-group">
-		<a data-ng-repeat="stockrecord in stockrecords" data-ng-href="#!/stockrecords/{{stock._id}}" class="list-group-item">
+		<div data-ng-repeat="stockrecord in stocks">
+		<div class="page-header" ng-show="$first">
+			<h1>Stock Records for {{stockrecord.stock.code}}</h1>
+		</div>
+		<div class="list-group-item">
 			<small class="list-group-item-text">
-				Posted on
-				<span data-ng-bind="stockrecord.created | date:'mediumDate'"></span>
-				by
-				<span data-ng-bind="stockrecord.stock.title"></span>
+				<span data-ng-bind="stockrecord.created | date:'medium'"></span>
 			</small>
 			<h3 class="list-group-item-heading" data-ng-bind="stockrecord.price"></h3>
 			<strong>Price:</strong> {{stockrecord.price}},
-		</a>
+		</div>
+		</div>
 	</div>
 	<div class="alert alert-warning text-center" data-ng-if="stockrecords.$resolved && !stockrecords.length">
 		No stock records yet.

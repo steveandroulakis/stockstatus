@@ -17,6 +17,9 @@ module.exports = function(app) {
 		.put(users.requiresLogin, stocks.hasAuthorization, stocks.update)
 		.delete(users.requiresLogin, stocks.hasAuthorization, stocks.delete);
 
+	app.route('/stocks/:stockId/records')
+		.get(users.requiresLogin, stocks.hasAuthorization, stocks.listrecords);
+
 	// Finish by binding the stock middleware
 	app.param('stockId', stocks.stockByID);
 };

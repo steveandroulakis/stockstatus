@@ -161,20 +161,22 @@ module.exports = function(db) {
 
 	var cronJob = cron.job('* * * * * *', function(){
         // perform operation e.g. GET request http.get() etc.
-        console.log('cron job started');
+        console.log('cron job started');     
 
-	db.model('Stockrecord').create({
-				price: 4}, function (err) {
-	  if (err) {
-	  	console.log(err);
-	  }
-	});        
-
- //    db.model('Stock').find(function (err, stocks) {
- //  	if (err) return console.error(err);
+    db.model('Stock').find(function (err, stocks) {
+  	if (err) return console.error(err);
   	
- //  	stocks.forEach(function(stock) { console.log(stock.speak()); });
-	// });
+  		stocks.forEach(function(stock) { 
+
+			db.model('Stockrecord').create({
+						price: 4, stock: stock}, function (err) {
+			  if (err) {
+			  	console.log(err);
+			  }
+			});   
+
+  		 });
+	});
 
     });
 
