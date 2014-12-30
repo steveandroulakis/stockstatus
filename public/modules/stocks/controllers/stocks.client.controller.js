@@ -46,6 +46,9 @@ angular.module('stocks').controller('StocksController', ['$scope', '$stateParams
 		};
 
 		$scope.find = function() {
+			//console.log(angular.toJson($location, true));
+			//console.log($location.path());
+
 			$scope.stocks = Stocks.query();
 		};
 

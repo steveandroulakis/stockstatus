@@ -9,10 +9,6 @@ angular.module('stocks').config(['$stateProvider',
 			url: '/stockrecords/create',
 			templateUrl: 'modules/stocks/views/create-stockrecord.client.view.html'
 		}).	
-		state('listStocks', {
-			url: '/stocks',
-			templateUrl: 'modules/stocks/views/list-stocks.client.view.html'
-		}).
 		state('createStock', {
 			url: '/stocks/create',
 			templateUrl: 'modules/stocks/views/create-stock.client.view.html'
@@ -28,6 +24,14 @@ angular.module('stocks').config(['$stateProvider',
 		state('viewStockrecord', {
 			url: '/stocks/:stockId/records',
 			templateUrl: 'modules/stocks/views/list-stockrecords.client.view.html'
-		});
+		}).
+		state('listStocks', {
+			url: '/stocks',
+			templateUrl: 'modules/stocks/views/list-stocks.client.view.html'
+		}).
+		state('plain', {
+        	url: '^/plain',
+        	templateUrl: 'modules/stocks/views/list-stocks.plain.view.html',
+    	});		
 	}
 ]);

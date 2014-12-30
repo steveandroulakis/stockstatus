@@ -1,0 +1,112 @@
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+		<meta http-equiv="Cache-control" content="no-cache" />
+		
+		<style type="text/css">
+			.navbar-static-top, .navbar-fixed-top, .navbar-fixed-bottom {
+				display: none;
+			}
+/*			@font-face
+			{
+				font-family: "Roadgeek2005SeriesD";
+				src: url("http://panic.com/fonts/Roadgeek 2005 Series D/Roadgeek 2005 Series D.otf");
+			}*/
+
+			.content {
+				margin-top: 0;
+			}
+
+			.container {
+				padding: 0;
+				margin: 0;
+			}
+			
+			body, *
+			{
+				background-color:black;
+			}
+			body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td
+			{ 
+				margin: 0;
+				padding: 0;
+			}
+				
+			fieldset,img
+			{ 
+				border: 0;
+			}
+			
+				
+			/* Settin' up the page */
+			
+			html, body, #main
+			{
+				overflow: hidden; /* */
+			}
+			
+			body
+			{
+				color: white;
+				font-family: 'Roadgeek2005SeriesD', sans-serif;
+				font-size: 16px;
+				line-height: 24px;
+				background: black;
+			}
+			body, html, #main
+			{
+				background: transparent !important;
+			}
+			
+			#spacepeopleContainer
+			{
+				width: 250px;
+				height: 250px;
+				text-align: center;
+				background-color: gray;
+			}
+			#spacepeopleContainer *
+			{
+				font-weight: normal;
+			}
+			
+			h1
+			{
+				font-size: 120px;
+				line-height: 120px;
+				margin-top: 15px;
+				margin-bottom: 28px;
+				color: white;
+				text-shadow:0px -2px 0px black;
+				text-transform: uppercase;
+			}
+			
+			h2
+			{
+				width: 180px;
+				margin: 0px auto;
+				padding-top: 20px;
+				font-size: 16px;
+				line-height: 18px;
+				color: #7e7e7e;
+				text-transform: uppercase;
+			}
+		</style>
+
+	</head>
+<div id="main" data-ng-controller="StocksController" data-ng-init="find()">
+	<div id="spacepeopleContainer">
+		<a data-ng-repeat="stock in stocks">
+			<small>
+				Added on 
+				<span data-ng-bind="stock.created | date:'mediumDate'"></span>
+			</small>
+			<h3 data-ng-bind="stock.title"></h3>
+			<strong>Code:</strong> {{stock.code}}
+			<p>{{stock._id}}</p>
+		</a>
+	</div>
+	<div data-ng-if="stocks.$resolved && !stocks.length">
+		No stocks yet, why don't you <a href="/#!/stocks/create">create one</a>?
+	</div>
+</div>
+</div>
